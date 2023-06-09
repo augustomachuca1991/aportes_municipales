@@ -1,0 +1,132 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Jurisdiccion;
+use Illuminate\Database\Seeder;
+
+class JurisdiccionTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $jurisdicciones = [
+
+
+            ['codigo' => 1, 'origen_id' => 1, 'jurisdiccion' => 'MINISTERIO DE SEGURIDAD', 'created_at' => now()],
+            ['codigo' => 2, 'origen_id' => 1, 'jurisdiccion' => 'MINIS. DE HACIENDA Y FINANZAS', 'created_at' => now()],
+            ['codigo' => 3, 'origen_id' => 1, 'jurisdiccion' => 'MINISTERIO DE EDUCACIÓN', 'created_at' => now()],
+            ['codigo' => 4, 'origen_id' => 1, 'jurisdiccion' => 'SALUD PUBLICA', 'created_at' => now()],
+            ['codigo' => 5, 'origen_id' => 1, 'jurisdiccion' => 'MINISTERIO DE LA PRODUCCIÓN', 'created_at' => now()],
+            ['codigo' => 6, 'origen_id' => 1, 'jurisdiccion' => 'MRIO. DE OBRAS Y SERV. PÚBLICOS', 'created_at' => now()],
+            ['codigo' => 7, 'origen_id' => 1, 'jurisdiccion' => 'MINISTERIO SECRETARIA GENERAL', 'created_at' => now()],
+            ['codigo' => 8, 'origen_id' => 1, 'jurisdiccion' => 'HONORABLE TRIBUNAL DE CUENTAS', 'created_at' => now()],
+            ['codigo' => 9, 'origen_id' => 1, 'jurisdiccion' => 'PODER JUDICIAL', 'created_at' => now()],
+            ['codigo' => 11, 'origen_id' => 1, 'jurisdiccion' => 'PODER LEGISLATIVO', 'created_at' => now()],
+            ['codigo' => 12, 'origen_id' => 1, 'jurisdiccion' => 'FISCALÍA DE ESTADO', 'created_at' => now()],
+            ['codigo' => 13, 'origen_id' => 1, 'jurisdiccion' => 'MINISTERIO DE COORDINACIÓN Y PLANIFICACIÓN', 'created_at' => now()],
+            ['codigo' => 14, 'origen_id' => 1, 'jurisdiccion' => 'MINISTERIO DE DESARROLLO SOCIAL', 'created_at' => now()],
+            ['codigo' => 15, 'origen_id' => 1, 'jurisdiccion' => 'DIRECCIÓN ENSEÑANZA PRIVADA', 'created_at' => now()],
+            ['codigo' => 16, 'origen_id' => 1, 'jurisdiccion' => 'MINIST. DE JUSTICIA Y DERECHOS HUMANOS', 'created_at' => now()],
+            ['codigo' => 17, 'origen_id' => 1, 'jurisdiccion' => 'SECRETARIA DE ENERGÍA', 'created_at' => now()],
+            ['codigo' => 18, 'origen_id' => 1, 'jurisdiccion' => 'MINIST. DE INDUSTRIA, TRABAJO Y COMERCIO', 'created_at' => now()],
+            ['codigo' => 19, 'origen_id' => 1, 'jurisdiccion' => 'MINISTERIO DE TURISMO', 'created_at' => now()],
+            ['codigo' => 21, 'origen_id' => 1, 'jurisdiccion' => 'INSTITUTO LOTERÍA Y CASINOS', 'created_at' => now()],
+            ['codigo' => 22, 'origen_id' => 1, 'jurisdiccion' => 'JEFATURA DE POLICÍA', 'created_at' => now()],
+            ['codigo' => 23, 'origen_id' => 1, 'jurisdiccion' => 'ENSEÑANZA MEDIA Y SUPERIOR', 'created_at' => now()],
+            ['codigo' => 24, 'origen_id' => 1, 'jurisdiccion' => 'INSTITUTO CORRENTINO DEL AGUA', 'created_at' => now()],
+            ['codigo' => 25, 'origen_id' => 1, 'jurisdiccion' => 'VIALIDAD PROVINCIAL', 'created_at' => now()],
+            ['codigo' => 26, 'origen_id' => 1, 'jurisdiccion' => 'INSTITUTO DE LA VIVIENDA', 'created_at' => now()],
+            ['codigo' => 27, 'origen_id' => 1, 'jurisdiccion' => 'INSTIT. PROVINCIAL DEL TABACO', 'created_at' => now()],
+            ['codigo' => 29, 'origen_id' => 1, 'jurisdiccion' => 'INSTITUTO PREVISIÓN SOCIAL', 'created_at' => now()],
+            ['codigo' => 30, 'origen_id' => 1, 'jurisdiccion' => 'INSTITUTO DE DESARROLLO RURAL CORRIENTES', 'created_at' => now()],
+            ['codigo' => 31, 'origen_id' => 1, 'jurisdiccion' => 'ADMINIST. DE OBRAS SANITARIAS', 'created_at' => now()],
+            ['codigo' => 32, 'origen_id' => 1, 'jurisdiccion' => 'INST.OBRA SOCIAL DE LA PROVIN.', 'created_at' => now()],
+            ['codigo' => 33, 'origen_id' => 1, 'jurisdiccion' => 'CONSEJO GENERAL DE EDUCACIÓN', 'created_at' => now()],
+            ['codigo' => 34, 'origen_id' => 1, 'jurisdiccion' => 'INSTITUTO DE CARDIOLOGÍA', 'created_at' => now()],
+            ['codigo' => 37, 'origen_id' => 1, 'jurisdiccion' => 'CONSEJO GENERAL DE EDUCACIÓN SUPLENTES', 'created_at' => now()],
+            ['codigo' => 38, 'origen_id' => 1, 'jurisdiccion' => 'INSTITUTO DE CULTURA', 'created_at' => now()],
+
+            ['codigo' => 101, 'origen_id' => 2, 'jurisdiccion' => 'ALVEAR', 'created_at' => now()],
+            ['codigo' => 102, 'origen_id' => 2, 'jurisdiccion' => 'B. DE ASTRADA', 'created_at' => now()],
+            ['codigo' => 103, 'origen_id' => 2, 'jurisdiccion' => 'BELLA VISTA', 'created_at' => now()],
+            ['codigo' => 104, 'origen_id' => 2, 'jurisdiccion' => 'BOMPLAND', 'created_at' => now()],
+            ['codigo' => 105, 'origen_id' => 2, 'jurisdiccion' => 'C. C. PELLEGRINI', 'created_at' => now()],
+            ['codigo' => 106, 'origen_id' => 2, 'jurisdiccion' => 'C. MOCORETA', 'created_at' => now()],
+            ['codigo' => 107, 'origen_id' => 2, 'jurisdiccion' => 'CAA CATI', 'created_at' => now()],
+            ['codigo' => 108, 'origen_id' => 2, 'jurisdiccion' => 'CAJA MUNICIPAL DE PRESTAMOS', 'created_at' => now()],
+            ['codigo' => 109, 'origen_id' => 2, 'jurisdiccion' => 'CAROLINA', 'created_at' => now()],
+            ['codigo' => 110, 'origen_id' => 2, 'jurisdiccion' => 'CHAVARRIA', 'created_at' => now()],
+            ['codigo' => 111, 'origen_id' => 2, 'jurisdiccion' => 'COL. LIBERTAD', 'created_at' => now()],
+            ['codigo' => 112, 'origen_id' => 2, 'jurisdiccion' => 'COLONIA LIEBIG', 'created_at' => now()],
+            ['codigo' => 113, 'origen_id' => 2, 'jurisdiccion' => 'COLONIA PANDO', 'created_at' => now()],
+            ['codigo' => 114, 'origen_id' => 2, 'jurisdiccion' => 'CONCEPCION', 'created_at' => now()],
+            ['codigo' => 115, 'origen_id' => 2, 'jurisdiccion' => 'CRUZ DE LOS MILAGROS', 'created_at' => now()],
+            ['codigo' => 116, 'origen_id' => 2, 'jurisdiccion' => 'CTES. CAPITAL', 'created_at' => now()],
+            ['codigo' => 117, 'origen_id' => 2, 'jurisdiccion' => 'CURUZU CUATIA', 'created_at' => now()],
+            ['codigo' => 118, 'origen_id' => 2, 'jurisdiccion' => 'EL SOMBRERO', 'created_at' => now()],
+            ['codigo' => 119, 'origen_id' => 2, 'jurisdiccion' => 'EMPEDRADO', 'created_at' => now()],
+            ['codigo' => 120, 'origen_id' => 2, 'jurisdiccion' => 'ESQUINA', 'created_at' => now()],
+            ['codigo' => 121, 'origen_id' => 2, 'jurisdiccion' => 'ESTACION TORRENT', 'created_at' => now()],
+            ['codigo' => 122, 'origen_id' => 2, 'jurisdiccion' => 'FELIPE YOFRE', 'created_at' => now()],
+            ['codigo' => 123, 'origen_id' => 2, 'jurisdiccion' => 'GARRUCHOS', 'created_at' => now()],
+            ['codigo' => 124, 'origen_id' => 2, 'jurisdiccion' => 'GDOR. MARTINEZ', 'created_at' => now()],
+            ['codigo' => 125, 'origen_id' => 2, 'jurisdiccion' => 'GOB. VIRASORO', 'created_at' => now()],
+            ['codigo' => 126, 'origen_id' => 2, 'jurisdiccion' => 'GOYA', 'created_at' => now()],
+            ['codigo' => 127, 'origen_id' => 2, 'jurisdiccion' => 'GUAVIRAVI', 'created_at' => now()],
+            ['codigo' => 128, 'origen_id' => 2, 'jurisdiccion' => 'HERLITZKA', 'created_at' => now()],
+            ['codigo' => 129, 'origen_id' => 2, 'jurisdiccion' => 'ITA IBATE', 'created_at' => now()],
+            ['codigo' => 130, 'origen_id' => 2, 'jurisdiccion' => 'ITATI', 'created_at' => now()],
+            ['codigo' => 131, 'origen_id' => 2, 'jurisdiccion' => 'ITUZAINGO', 'created_at' => now()],
+            ['codigo' => 132, 'origen_id' => 2, 'jurisdiccion' => 'JOSE R.GOMEZ (GARAVI)', 'created_at' => now()],
+            ['codigo' => 133, 'origen_id' => 2, 'jurisdiccion' => 'JUAN PUJOL', 'created_at' => now()],
+            ['codigo' => 134, 'origen_id' => 2, 'jurisdiccion' => 'L. DE VALLEJOS', 'created_at' => now()],
+            ['codigo' => 135, 'origen_id' => 2, 'jurisdiccion' => 'LA CRUZ', 'created_at' => now()],
+            ['codigo' => 136, 'origen_id' => 2, 'jurisdiccion' => 'LAVALLE', 'created_at' => now()],
+            ['codigo' => 137, 'origen_id' => 2, 'jurisdiccion' => 'LORETO', 'created_at' => now()],
+            ['codigo' => 138, 'origen_id' => 2, 'jurisdiccion' => 'MARIANO I. LOZA', 'created_at' => now()],
+            ['codigo' => 139, 'origen_id' => 2, 'jurisdiccion' => 'MBURUCUYA', 'created_at' => now()],
+            ['codigo' => 140, 'origen_id' => 2, 'jurisdiccion' => 'MERCEDES', 'created_at' => now()],
+            ['codigo' => 141, 'origen_id' => 2, 'jurisdiccion' => 'MONTE CASEROS', 'created_at' => now()],
+            ['codigo' => 142, 'origen_id' => 2, 'jurisdiccion' => 'NUEVE DE JULIO', 'created_at' => now()],
+            ['codigo' => 143, 'origen_id' => 2, 'jurisdiccion' => 'P. DE LA PATRIA', 'created_at' => now()],
+            ['codigo' => 144, 'origen_id' => 2, 'jurisdiccion' => 'P. DE LOS LIBRES', 'created_at' => now()],
+            ['codigo' => 145, 'origen_id' => 2, 'jurisdiccion' => 'P. LIBERTADOR', 'created_at' => now()],
+            ['codigo' => 146, 'origen_id' => 2, 'jurisdiccion' => 'P. R. FERNANDEZ', 'created_at' => now()],
+            ['codigo' => 147, 'origen_id' => 2, 'jurisdiccion' => 'PAGO DE LOS DESEOS', 'created_at' => now()],
+            ['codigo' => 148, 'origen_id' => 2, 'jurisdiccion' => 'PALMAR GRANDE', 'created_at' => now()],
+            ['codigo' => 149, 'origen_id' => 2, 'jurisdiccion' => 'PARADA PUCHETA', 'created_at' => now()],
+            ['codigo' => 150, 'origen_id' => 2, 'jurisdiccion' => 'PERUGORRIA', 'created_at' => now()],
+            ['codigo' => 151, 'origen_id' => 2, 'jurisdiccion' => 'RAMADA PASO', 'created_at' => now()],
+            ['codigo' => 152, 'origen_id' => 2, 'jurisdiccion' => 'RIACHUELO', 'created_at' => now()],
+            ['codigo' => 153, 'origen_id' => 2, 'jurisdiccion' => 'S. L DEL PALMAR', 'created_at' => now()],
+            ['codigo' => 154, 'origen_id' => 2, 'jurisdiccion' => 'SALADAS', 'created_at' => now()],
+            ['codigo' => 155, 'origen_id' => 2, 'jurisdiccion' => 'SAN ANTONIO APIPE', 'created_at' => now()],
+            ['codigo' => 156, 'origen_id' => 2, 'jurisdiccion' => 'SAN CARLOS', 'created_at' => now()],
+            ['codigo' => 157, 'origen_id' => 2, 'jurisdiccion' => 'SAN COSME', 'created_at' => now()],
+            ['codigo' => 158, 'origen_id' => 2, 'jurisdiccion' => 'SAN ISIDRO', 'created_at' => now()],
+            ['codigo' => 159, 'origen_id' => 2, 'jurisdiccion' => 'SAN LORENZO', 'created_at' => now()],
+            ['codigo' => 160, 'origen_id' => 2, 'jurisdiccion' => 'SAN MIGUEL', 'created_at' => now()],
+            ['codigo' => 161, 'origen_id' => 2, 'jurisdiccion' => 'SAN ROQUE', 'created_at' => now()],
+            ['codigo' => 162, 'origen_id' => 2, 'jurisdiccion' => 'SANTA ANA', 'created_at' => now()],
+            ['codigo' => 163, 'origen_id' => 2, 'jurisdiccion' => 'SANTA LUCIA', 'created_at' => now()],
+            ['codigo' => 164, 'origen_id' => 2, 'jurisdiccion' => 'SANTA ROSA', 'created_at' => now()],
+            ['codigo' => 165, 'origen_id' => 2, 'jurisdiccion' => 'SANTO TOME', 'created_at' => now()],
+            ['codigo' => 166, 'origen_id' => 2, 'jurisdiccion' => 'SAUCE', 'created_at' => now()],
+            ['codigo' => 167, 'origen_id' => 2, 'jurisdiccion' => 'TABAY', 'created_at' => now()],
+            ['codigo' => 168, 'origen_id' => 2, 'jurisdiccion' => 'TAPEBICUA', 'created_at' => now()],
+            ['codigo' => 169, 'origen_id' => 2, 'jurisdiccion' => 'TATACUA', 'created_at' => now()],
+            ['codigo' => 170, 'origen_id' => 2, 'jurisdiccion' => 'TRES DE ABRIL', 'created_at' => now()],
+            ['codigo' => 171, 'origen_id' => 2, 'jurisdiccion' => 'VILLA OLAVARI', 'created_at' => now()],
+            ['codigo' => 172, 'origen_id' => 2, 'jurisdiccion' => 'YAPEYU', 'created_at' => now()],
+            ['codigo' => 173, 'origen_id' => 2, 'jurisdiccion' => 'YATAITI CALLE', 'created_at' => now()],
+
+            ['codigo' => 1000, 'origen_id' => 3, 'jurisdiccion' => 'D.P.E.C', 'created_at' => now()],
+        ];
+        Jurisdiccion::insert($jurisdicciones);
+    }
+}
