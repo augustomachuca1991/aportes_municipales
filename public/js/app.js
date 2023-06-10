@@ -11593,6 +11593,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -11622,6 +11625,9 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     items: function items() {
       return this.$store.state.items;
+    },
+    lengthOfService: function lengthOfService() {
+      return this.$store.getters.lengthOfService;
     }
   }
 });
@@ -11639,6 +11645,235 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -12365,9 +12600,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     createItem: function createItem() {
       //this.addItem({ item: this.item })
-      this.$store.dispatch("removeErrors", {
-        item: this.item
-      });
+      this.$store.dispatch("removeErrors");
       this.$store.dispatch("addItem", {
         item: this.item
       }); //const params = { item: this.item };
@@ -12465,7 +12698,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 var conection = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-  baseURL: "http://aportes.test/api/"
+  baseURL: "http://aportes_municipales.test/api/"
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (conection);
 
@@ -12664,9 +12897,26 @@ var removeErrors = function removeErrors(_ref2) {
 /*!***************************************!*\
   !*** ./resources/js/store/getters.js ***!
   \***************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "lengthOfService": () => (/* binding */ lengthOfService)
+/* harmony export */ });
+var lengthOfService = function lengthOfService(state) {
+  var fechaIngreso = new Date("2018-06-01");
+  var fechaEgreso = new Date("2022-12-31");
+  var diferenciaMilisegundos = fechaEgreso.getTime() - fechaIngreso.getTime();
+  var milisegundosEnUnAnio = 365.25 * 24 * 60 * 60 * 1000;
+  var antiguedadEnAnios = diferenciaMilisegundos / milisegundosEnUnAnio;
+  var aniosCompletos = Math.floor(antiguedadEnAnios);
+  var mesesRestantes = Math.floor((antiguedadEnAnios - aniosCompletos) * 12);
+  return {
+    'anio': aniosCompletos,
+    'meses': mesesRestantes
+  };
+};
 
 /***/ }),
 
@@ -12685,7 +12935,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./state */ "./resources/js/store/state.js");
 /* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getters */ "./resources/js/store/getters.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_getters__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mutations */ "./resources/js/store/mutations.js");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions */ "./resources/js/store/actions.js");
 
@@ -78352,9 +78601,7 @@ var render = function () {
                                 _c("strong", [_vm._v("Fecha de Ingreso:")]),
                                 _vm._v(
                                   "\n                                            " +
-                                    _vm._s(
-                                      _vm._f("formatDate")(item.fechaIngreso)
-                                    ) +
+                                    _vm._s(item.fechaIngreso) +
                                     "\n                                        "
                                 ),
                               ]),
@@ -78364,7 +78611,9 @@ var render = function () {
                                 _vm._v(
                                   "\n                                            " +
                                     _vm._s(
-                                      _vm._f("formatDate")(item.fechaEgreso)
+                                      item.fechaEgreso
+                                        ? item.fechaEgreso
+                                        : "Continua"
                                     ) +
                                     "\n                                        "
                                 ),
@@ -78396,9 +78645,66 @@ var render = function () {
                                     "\n                                        "
                                 ),
                               ]),
+                              _vm._v(" "),
+                              _c("p", [
+                                _c("strong", [_vm._v("Años Antiguedad:")]),
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(_vm.lengthOfService.anio) +
+                                    " Años y " +
+                                    _vm._s(_vm.lengthOfService.meses) +
+                                    " Meses\n                                        "
+                                ),
+                              ]),
                             ]),
                             _vm._v(" "),
-                            _vm._m(3, true),
+                            _c("div", { staticClass: "col-md-8" }, [
+                              _c("table", { staticClass: "table" }, [
+                                _vm._m(3, true),
+                                _vm._v(" "),
+                                _c("tbody", [
+                                  _c("tr", [
+                                    _c("td", [_vm._v(_vm._s(item.basico))]),
+                                    _vm._v(" "),
+                                    _c("td", [_vm._v(_vm._s(item.antiguedad))]),
+                                    _vm._v(" "),
+                                    _c("td", [_vm._v(_vm._s(item.titulo))]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(item.presentismo)),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [_vm._v(_vm._s(item.adicional))]),
+                                    _vm._v(" "),
+                                    _c("td", [_vm._v(_vm._s(item.resolucion))]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(item.minGarantizado)),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(item.noRemunerativo)),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [_vm._v(_vm._s(item.plus))]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(item.dedicacionFuncional)),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        _vm._s(item.prolongacionDeJornada)
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(item.productividad)),
+                                    ]),
+                                  ]),
+                                ]),
+                              ]),
+                            ]),
                           ]),
                         ]),
                       ]),
@@ -78464,67 +78770,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-8" }, [
-      _c("table", { staticClass: "table" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Básico")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Antiguedad")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Título")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Presentismo")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Adicional")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Resolucion")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Min Garantizado")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("No Remunerativo")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Plus")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Dedicación Funcional"),
-            ]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [
-              _vm._v("Prolongación De Jornada"),
-            ]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("productividad")]),
-          ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Básico")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Antiguedad")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Título")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Presentismo")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Adicional")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Resolucion")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Min Garantizado")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("No Remunerativo")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Plus")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Dedicación Funcional")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Prolongación De Jornada"),
         ]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v("$100")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$150")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$200")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$200")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$100")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$150")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$200")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$200")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$100")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$150")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$200")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("$200")]),
-          ]),
-        ]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("productividad")]),
       ]),
     ])
   },
@@ -78552,7 +78824,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card py-4 px-3" }, [
-    _c("h2", [_vm._v("Nuevo Registro")]),
+    _c("h2", [_vm._v("Nuevo Registro edit")]),
     _vm._v(" "),
     _c(
       "form",
@@ -79211,6 +79483,536 @@ var render = function () {
                 },
               },
             }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col" }, [
+            _c("label", { attrs: { for: "Conceptos" } }, [_vm._v("CONCEPTOS")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.basico,
+                    expression: "item.basico",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.basico"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Basico",
+                  placeholder: "Basico $",
+                  name: "inputBasico",
+                },
+                domProps: { value: _vm.item.basico },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.item, "basico", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.basico"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(_vm.errors["item.basico"])
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.antiguedad,
+                    expression: "item.antiguedad",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.antiguedad"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Antiguedad",
+                  placeholder: "Antiguedad $",
+                  name: "inputAntiguedad",
+                },
+                domProps: { value: _vm.item.antiguedad },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.item, "antiguedad", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.antiguedad"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(_vm.errors["item.antiguedad"])
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.titulo,
+                    expression: "item.titulo",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.titulo"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Titulo",
+                  placeholder: "Titulo $",
+                  name: "inputTitulo",
+                },
+                domProps: { value: _vm.item.titulo },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.item, "titulo", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.titulo"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(_vm.errors["item.titulo"])
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.presentismo,
+                    expression: "item.presentismo",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.presentismo"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Presentismo",
+                  placeholder: "Presentismo $",
+                  name: "inputPresentismo",
+                },
+                domProps: { value: _vm.item.presentismo },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.item, "presentismo", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.presentismo"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(_vm.errors["item.presentismo"])
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.adicional,
+                    expression: "item.adicional",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.adicional"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Adicional",
+                  placeholder: "Adicional $",
+                  name: "inputAdicional",
+                },
+                domProps: { value: _vm.item.adicional },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.item, "adicional", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.adicional"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(_vm.errors["item.adicional"])
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.resolucion,
+                    expression: "item.resolucion",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.resolucion"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Resolucion",
+                  placeholder: "Resolucion $",
+                  name: "inputResolucion",
+                },
+                domProps: { value: _vm.item.resolucion },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.item, "resolucion", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.resolucion"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(_vm.errors["item.resolucion"])
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.minGarantizado,
+                    expression: "item.minGarantizado",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.minGarantizado"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Min Garantizado",
+                  placeholder: "Min Garantizado $",
+                  name: "inputMinGarantizado",
+                },
+                domProps: { value: _vm.item.minGarantizado },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.item, "minGarantizado", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.minGarantizado"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(
+                            _vm.errors["item.minGarantizado"]
+                          )
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.noRemunerativo,
+                    expression: "item.noRemunerativo",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.noRemunerativo"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "No Remunerativo",
+                  placeholder: "No Remunerativo $",
+                  name: "inputNoRemunerativo",
+                },
+                domProps: { value: _vm.item.noRemunerativo },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.item, "noRemunerativo", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.noRemunerativo"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(
+                            _vm.errors["item.noRemunerativo"]
+                          )
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.plus,
+                    expression: "item.plus",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.plus"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Plus",
+                  placeholder: "Plus $",
+                  name: "inputPlus",
+                },
+                domProps: { value: _vm.item.plus },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.item, "plus", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.plus"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(_vm.errors["item.plus"])
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.dedicacionFuncional,
+                    expression: "item.dedicacionFuncional",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.dedicacionFuncional"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Dedicacion Funcional",
+                  placeholder: "Dedicacion Funcional $",
+                  name: "inputDedicicacionFuncional",
+                },
+                domProps: { value: _vm.item.dedicacionFuncional },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.item,
+                      "dedicacionFuncional",
+                      $event.target.value
+                    )
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.dedicacionFuncional"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(
+                            _vm.errors["item.dedicacionFuncional"]
+                          )
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.prolongacionDeJornada,
+                    expression: "item.prolongacionDeJornada",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.prolongacionDeJornada"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Prolongacion de Jornada",
+                  placeholder: "Prolongacion de Jornada $",
+                  name: "inputProlongacionDeJornada",
+                },
+                domProps: { value: _vm.item.prolongacionDeJornada },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.item,
+                      "prolongacionDeJornada",
+                      $event.target.value
+                    )
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.prolongacionDeJornada"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(
+                            _vm.errors["item.prolongacionDeJornada"]
+                          )
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.productividad,
+                    expression: "item.productividad",
+                  },
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-invalid": _vm.errors["item.productividad"],
+                },
+                attrs: {
+                  type: "text",
+                  "aria-label": "Productividad",
+                  placeholder: "Productividad $",
+                  name: "inputProductividad",
+                },
+                domProps: { value: _vm.item.productividad },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.item, "productividad", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.errors["item.productividad"]
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(
+                          _vm._f("firstElement")(
+                            _vm.errors["item.productividad"]
+                          )
+                        ) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
+            ]),
           ]),
         ]),
         _vm._v(" "),

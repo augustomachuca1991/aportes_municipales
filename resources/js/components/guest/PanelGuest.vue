@@ -269,14 +269,13 @@
                                             <strong>Fecha de Ingreso:</strong>
                                             {{
                                             item.fechaIngreso
-                                            | formatDate
                                             }}
                                         </p>
                                         <p>
                                             <strong>Fecha de Egreso:</strong>
                                             {{
                                             item.fechaEgreso
-                                            | formatDate
+                                             ? item.fechaEgreso : 'Continua'
                                             }}
                                         </p>
                                         <p>
@@ -290,6 +289,10 @@
                                         <p>
                                             <strong>Estado:</strong>
                                             {{ item.estado }}
+                                        </p>
+                                        <p>
+                                            <strong>Años Antiguedad:</strong>
+                                            {{lengthOfService.anio }} Años y {{ lengthOfService.meses }} Meses
                                         </p>
                                     </div>
                                     <div class="col-md-8">
@@ -312,18 +315,18 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>$100</td>
-                                                    <td>$150</td>
-                                                    <td>$200</td>
-                                                    <td>$200</td>
-                                                    <td>$100</td>
-                                                    <td>$150</td>
-                                                    <td>$200</td>
-                                                    <td>$200</td>
-                                                    <td>$100</td>
-                                                    <td>$150</td>
-                                                    <td>$200</td>
-                                                    <td>$200</td>
+                                                    <td>{{item.basico}}</td>
+                                                    <td>{{item.antiguedad}}</td>
+                                                    <td>{{item.titulo}}</td>
+                                                    <td>{{item.presentismo}}</td>
+                                                    <td>{{item.adicional}}</td>
+                                                    <td>{{item.resolucion}}</td>
+                                                    <td>{{item.minGarantizado}}</td>
+                                                    <td>{{item.noRemunerativo}}</td>
+                                                    <td>{{item.plus}}</td>
+                                                    <td>{{item.dedicacionFuncional}}</td>
+                                                    <td>{{item.prolongacionDeJornada}}</td>
+                                                    <td>{{item.productividad}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -374,6 +377,9 @@ export default {
         items() {
             return this.$store.state.items;
         },
+        lengthOfService(){
+            return this.$store.getters.lengthOfService
+        }
     },
 };
 </script>
