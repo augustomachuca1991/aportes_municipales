@@ -145,7 +145,7 @@ Route::middleware('auth:sanctum')->group(function () {
     
 });
 
-Route::post('/items/add', [ItemController::class, 'add'])->name('items.add');
+Route::post('/items/create', [ItemController::class, 'store'])->name('items.store');
 
 
 

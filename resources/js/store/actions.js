@@ -10,6 +10,14 @@ export const addItem = ({ commit }, item) => {
         });
 };
 
+export const deleteItem = ({commit}, index) => {
+    commit('SET_ITEM_DELETE' , index)
+}
+
+export const editItem = ({commit}, index) => {
+    commit('SET_ITEM_EDIT' , index)
+}
+
 export const removeErrors = ({ commit }) => {
     commit('SET_ERRORS' , [])
 };

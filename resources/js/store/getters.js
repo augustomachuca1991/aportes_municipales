@@ -9,3 +9,7 @@ export const lengthOfService = (state) => {
     
     return {'anio':aniosCompletos, 'meses': mesesRestantes};
 };
+
+export const itemsTotal = (state) => {
+    return state.items.length
+}
