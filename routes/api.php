@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\JurisdiccionController;
 use App\Http\Controllers\Admin\OrganismoController;
 use App\Http\Controllers\Admin\TipocodigoController;
 use App\Http\Controllers\Admin\DeclaracionJuradaLinesController;
+use App\Http\Controllers\Admin\EstadoController;
 use App\Http\Controllers\Admin\LiquidacionController;
 use App\Http\Controllers\Admin\OrigenController;
 use App\Http\Controllers\Admin\PeriodoController;
@@ -144,9 +145,9 @@ Route::middleware('auth:sanctum')->group(function () {
     
     
 });
-
+Route::get('/periodos', [PeriodoController::class, 'getPeriodos'])->name('periodos.get');
 Route::post('/items/create', [ItemController::class, 'store'])->name('items.store');
-
+Route::get('/estados', [EstadoController::class, 'getEstados'])->name('estados.get');
 
 
 

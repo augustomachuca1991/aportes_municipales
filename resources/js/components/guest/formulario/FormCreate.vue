@@ -4,130 +4,64 @@
         <form @submit.prevent="createItem()">
             <div class="row">
                 <div class="col-md-4">
-                    <label for="nombre">NOMBRE(*)</label>
-                    <input
+                    <input-component
                         v-model="item.nombre"
+                        label="NOMBRE (*)"
                         type="text"
-                        class="form-control"
-                        :class="{ 'is-invalid': errors['item.nombre'] }"
-                        id="nombre"
-                    />
-                    <div class="invalid-feedback" v-if="errors['item.nombre']">
-                        {{ errors["item.nombre"] | firstElement }}
-                    </div>
+                        name="nombre"
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
                 <div class="col-md-4">
-                    <label for="cuil">CUIL(*)</label>
-                    <div class="input-group">
-                        <input
-                            v-model="item.cuil.first"
-                            type="text"
-                            class="form-control"
-                            :class="{
-                                'is-invalid': errors['item.cuil.first'],
-                            }"
-                            id="cuil1"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.cuil.first']"
-                        >
-                            {{ errors["item.cuil.first"] | firstElement }}
-                        </div>
-                        <input
-                            v-model="item.cuil.middle"
-                            type="text"
-                            class="form-control"
-                            :class="{
-                                'is-invalid': errors['item.cuil.middle'],
-                            }"
-                            id="cuil2"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.cuil.middle']"
-                        >
-                            {{ errors["item.cuil.middle"] | firstElement }}
-                        </div>
-                        <input
-                            v-model="item.cuil.last"
-                            type="text"
-                            class="form-control"
-                            :class="{
-                                'is-invalid': errors['item.cuil.last'],
-                            }"
-                            id="cuil3"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.cuil.last']"
-                        >
-                            {{ errors["item.cuil.last"] | firstElement }}
-                        </div>
-                    </div>
+                    <input-component
+                        v-model="item.cuil"
+                        label="CUIL (*)"
+                        type="text"
+                        name="cuil"
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
                 <div class="col-md-4">
-                    <label for="fechaIngreso">FECHA INGRESO(*)</label>
-                    <input
+                    <input-component
                         v-model="item.fechaIngreso"
+                        label="FECHA DE INGRESO (*)"
                         type="date"
-                        class="form-control"
-                        id="fechaIngreso"
-                        :class="{
-                            'is-invalid': errors['item.fechaIngreso'],
-                        }"
-                    />
-                    <div
-                        class="invalid-feedback"
-                        v-if="errors['item.fechaIngreso']"
-                    >
-                        {{ errors["item.fechaIngreso"] | firstElement }}
-                    </div>
+                        name="fechaIngreso"
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="fecha-nac">FECHA DE NACIMIENTO(*)</label>
-                    <input
+                    <input-component
                         v-model="item.nac"
+                        label="FECHA DE NACIMIENTO (*)"
                         type="date"
-                        class="form-control"
-                        :class="{ 'is-invalid': errors['item.nac'] }"
-                        id="fecha-nac"
-                    />
-                    <div class="invalid-feedback" v-if="errors['item.nac']">
-                        {{ errors["item.nac"] | firstElement }}
-                    </div>
+                        name="nac"
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
                 <div class="col-md-4">
-                    <label for="estadoCivil">ESTADO CIVIL(*)</label>
-                    <select
+                    <input-component
+                        label="ESTADO CIVIL (*)"
+                        name="estadoCivil"
+                        type="select"
+                        :options="civilOptions"
                         v-model="item.estadoCivil"
-                        class="form-select"
-                        :class="{
-                            'is-invalid': errors['item.estadoCivil'],
-                        }"
-                        id="estadoCivil"
-                    >
-                        <option value="" selected>Seleccione...</option>
-                        <option value="1">Soltero</option>
-                        <option value="2">Casado</option>
-                        <option value="3">Viudo</option>
-                    </select>
-                    <div
-                        class="invalid-feedback"
-                        v-if="errors['item.estadoCivil']"
-                    >
-                        {{ errors["item.estadoCivil"] | firstElement }}
-                    </div>
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
                 <div class="col-md-4">
-                    <label for="sexo">SEXO(*)</label>
-                    <div class="invalid-feedback">obligatorio</div>
+                    <label for="sexo">SEXO (*)</label>
                     <fieldset
                         class="border rounded px-2 py-1"
                         :class="{
-                            'border-danger': errors['item.sexo'],
+                            'border-danger': errors['sexo'],
                         }"
                     >
                         <div class="form-check form-check-inline">
@@ -152,7 +86,6 @@
                                 id="femenino"
                                 value="2"
                             />
-                            <div class="invalid-feedback">obligatorio</div>
                             <label class="form-check-label" for="femenino"
                                 >Femenino</label
                             >
@@ -162,307 +95,212 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="cargo">CARGO(*)</label>
-                    <input
+                    <input-component
                         v-model="item.cargo"
+                        label="CARGO (*)"
                         type="text"
-                        class="form-control"
-                        id="cargo"
-                        :class="{ 'is-invalid': errors['item.cargo'] }"
-                    />
-                    <div class="invalid-feedback" v-if="errors['item.cargo']">
-                        {{ errors["item.cargo"] | firstElement }}
-                    </div>
+                        name="cargo"
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
                 <div class="col-md-4">
-                    <label for="situacion">SITUACIÓN(*)</label>
-                    <select
+                    <input-component
+                        label="SITUACIÓN DE REVISTA (*)"
+                        name="situacion"
+                        type="select"
+                        :options="situacionOptions"
                         v-model="item.situacion"
-                        id="situacion"
-                        class="form-select"
-                        :class="{ 'is-invalid': errors['item.situacion'] }"
-                    >
-                        <option value="" selected>Seleccione...</option>
-                        <option value="1">Planta Permanente</option>
-                        <option value="2">Contratado</option>
-                    </select>
-                    <div
-                        class="invalid-feedback"
-                        v-if="errors['item.situacion']"
-                    >
-                        {{ errors["item.situacion"] | firstElement }}
-                    </div>
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
                 <div class="col-md-4">
-                    <label for="estado">ESTADO(*)</label>
-                    <select
+                    <input-component
+                        label="ESTADO (*)"
+                        name="estado"
+                        type="select"
+                        :options="estados"
                         v-model="item.estado"
-                        class="form-select"
-                        :class="{
-                            'is-invalid': errors['item.estado'],
-                        }"
-                        id="estado"
-                    >
-                        <option value="" selected>Seleccione...</option>
-                        <option value="1">Contratado</option>
-                        <option value="2">Freelancer</option>
-                        <option value="3">OTRO</option>
-                    </select>
-                    <div class="invalid-feedback" v-if="errors['item.estado']">
-                        {{ errors["item.estado"] | firstElement }}
-                    </div>
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="direccion">DIRECCIÓN</label>
-                    <input
+                    <input-component
+                        label="DIRECCIÓN"
+                        name="direccion"
+                        type="text"
                         v-model="item.direccion"
-                        type="text"
-                        class="form-control"
-                        id="direccion"
-                    />
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
                 <div class="col-md-4">
-                    <label for="telefono">TELÉFONO</label>
-                    <input
+                    <input-component
+                        label="TELEFONO"
+                        name="telefono"
+                        type="text"
                         v-model="item.telefono"
-                        type="text"
-                        class="form-control"
-                        id="numeroTelefono"
-                    />
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
                 <div class="col-md-4">
-                    <label for="fechaEgreso">FECHA EGRESO !</label>
-                    <input
-                        v-model="item.fechaEgreso"
+                    <input-component
+                        label="FECHA DE EGRESO"
+                        name="fechaEgreso"
                         type="date"
-                        class="form-control"
-                        id="fechaEgreso"
-                    />
+                        v-model="item.fechaEgreso"
+                        :errors="errors"
+                        classes="form-control"
+                    ></input-component>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="Conceptos">CONCEPTOS</label>
                     <div class="input-group">
-                        <input
+                        <input-component
                             v-model="item.basico"
-                            type="text"
-                            aria-label="Basico"
-                            class="form-control"
-                            placeholder="Basico $"
-                            name="inputBasico"
-                            :class="{
-                                'is-invalid': errors['item.basico'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.basico']"
-                        >
-                            {{ errors["item.basico"] | firstElement }}
-                        </div>
-                        <input
+                            arial-label="BASICO"
+                            type="number"
+                            name="basico"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="basico"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.antiguedad"
-                            type="text"
-                            aria-label="Antiguedad"
-                            class="form-control"
-                            placeholder="Antiguedad $"
-                            name="inputAntiguedad"
-                            :class="{
-                                'is-invalid': errors['item.antiguedad'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.antiguedad']"
-                        >
-                            {{ errors["item.antiguedad"] | firstElement }}
-                        </div>
-                        <input
+                            arial-label="antiguedad"
+                            type="number"
+                            name="antiguedad"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="antiguedad"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.titulo"
-                            type="text"
-                            aria-label="Titulo"
-                            class="form-control"
-                            placeholder="Titulo $"
-                            name="inputTitulo"
-                            :class="{
-                                'is-invalid': errors['item.titulo'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.titulo']"
-                        >
-                            {{ errors["item.titulo"] | firstElement }}
-                        </div>
-                        <input
+                            arial-label="titulo"
+                            type="number"
+                            name="titulo"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="titulo"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.presentismo"
-                            type="text"
-                            aria-label="Presentismo"
-                            class="form-control"
-                            placeholder="Presentismo $"
-                            name="inputPresentismo"
-                            :class="{
-                                'is-invalid': errors['item.presentismo'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.presentismo']"
-                        >
-                            {{ errors["item.presentismo"] | firstElement }}
-                        </div>
-                        <input
+                            arial-label="presentismo"
+                            type="number"
+                            name="presentismo"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="presentismo"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.adicional"
-                            type="text"
-                            aria-label="Adicional"
-                            class="form-control"
-                            placeholder="Adicional $"
-                            name="inputAdicional"
-                            :class="{
-                                'is-invalid': errors['item.adicional'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.adicional']"
-                        >
-                            {{ errors["item.adicional"] | firstElement }}
-                        </div>
-                        <input
+                            arial-label="adicional"
+                            type="number"
+                            name="adicional"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="adicional"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.resolucion"
-                            type="text"
-                            aria-label="Resolucion"
-                            class="form-control"
-                            placeholder="Resolucion $"
-                            name="inputResolucion"
-                            :class="{
-                                'is-invalid': errors['item.resolucion'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.resolucion']"
-                        >
-                            {{ errors["item.resolucion"] | firstElement }}
-                        </div>
-                        <input
+                            arial-label="resolucion"
+                            type="number"
+                            name="resolucion"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="resolucion"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.minGarantizado"
-                            type="text"
-                            aria-label="Min Garantizado"
-                            class="form-control"
-                            placeholder="Min Garantizado $"
-                            name="inputMinGarantizado"
-                            :class="{
-                                'is-invalid': errors['item.minGarantizado'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.minGarantizado']"
-                        >
-                            {{ errors["item.minGarantizado"] | firstElement }}
-                        </div>
-                        <input
+                            arial-label="minGarantizado"
+                            type="number"
+                            name="minGarantizado"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="min garantizado"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.noRemunerativo"
-                            type="text"
-                            aria-label="No Remunerativo"
-                            class="form-control"
-                            placeholder="No Remunerativo $"
-                            name="inputNoRemunerativo"
-                            :class="{
-                                'is-invalid': errors['item.noRemunerativo'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.noRemunerativo']"
-                        >
-                            {{ errors["item.noRemunerativo"] | firstElement }}
-                        </div>
-                        <input
+                            arial-label="noRemunerativo"
+                            type="number"
+                            name="noRemunerativo"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="no remunerativo"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.plus"
-                            type="text"
-                            aria-label="Plus"
-                            class="form-control"
-                            placeholder="Plus $"
-                            name="inputPlus"
-                            :class="{
-                                'is-invalid': errors['item.plus'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.plus']"
-                        >
-                            {{ errors["item.plus"] | firstElement }}
-                        </div>
-                        <input
+                            arial-label="plus"
+                            type="number"
+                            name="plus"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="plus"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.dedicacionFuncional"
-                            type="text"
-                            aria-label="Dedicacion Funcional"
-                            class="form-control"
-                            placeholder="Dedicacion Funcional $"
-                            name="inputDedicicacionFuncional"
-                            :class="{
-                                'is-invalid':
-                                    errors['item.dedicacionFuncional'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.dedicacionFuncional']"
-                        >
-                            {{
-                                errors["item.dedicacionFuncional"]
-                                    | firstElement
-                            }}
-                        </div>
-                        <input
+                            arial-label="dedicacionFuncional"
+                            type="number"
+                            name="dedicacionFuncional"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="dedicacion funcional"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.prolongacionDeJornada"
-                            type="text"
-                            aria-label="Prolongacion de Jornada"
-                            class="form-control"
-                            placeholder="Prolongacion de Jornada $"
-                            name="inputProlongacionDeJornada"
-                            :class="{
-                                'is-invalid':
-                                    errors['item.prolongacionDeJornada'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.prolongacionDeJornada']"
-                        >
-                            {{
-                                errors["item.prolongacionDeJornada"]
-                                    | firstElement
-                            }}
-                        </div>
-                        <input
+                            arial-label="prolongacionDeJornada"
+                            type="number"
+                            name="prolongacionDeJornada"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="prolongacion de jornada"
+                            min="0"
+                        ></input-component>
+                        <input-component
                             v-model="item.productividad"
-                            type="text"
-                            aria-label="Productividad"
-                            class="form-control"
-                            placeholder="Productividad $"
-                            name="inputProductividad"
-                            :class="{
-                                'is-invalid': errors['item.productividad'],
-                            }"
-                        />
-                        <div
-                            class="invalid-feedback"
-                            v-if="errors['item.productividad']"
-                        >
-                            {{ errors["item.productividad"] | firstElement }}
-                        </div>
+                            arial-label="productividad"
+                            type="number"
+                            name="productividad"
+                            :errors="errors"
+                            classes="form-control"
+                            placeholder="productividad"
+                            min="0"
+                        ></input-component>
                     </div>
                 </div>
             </div>
+            <!-- <div class="row">
+                <div class="col">
+                    <input-component
+                        label="PERIODO"
+                        name="periodo"
+                        type="select"
+                        v-model="periodo"
+                        :errors="errros"
+                        :options="periodos"
+                        classes="form-control"
+                    >
+                    </input-component>
+                </div>
+            </div> -->
 
-            <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+            <input type="submit" class="btn btn-primary mt-3" value="Agregar" />
             <span> Los campos con (*) son obligatorios</span>
         </form>
     </div>
@@ -470,20 +308,17 @@
 
 <script>
 import { mapActions } from "vuex";
+import InputComponent from "../../generic/InputComponent.vue";
 export default {
     data: function () {
         return {
             item: {
                 nombre: "",
                 dni: "",
-                cuil: {
-                    first: "",
-                    middle: "",
-                    last: "",
-                },
+                cuil: "",
                 nac: "",
                 estadoCivil: "",
-                sexo: "",
+                sexo: "1",
                 direccion: "",
                 telefono: "",
                 fechaIngreso: "",
@@ -504,73 +339,57 @@ export default {
                 prolongacionDeJornada: "",
                 productividad: "",
             },
-            hasServerError: false,
-            
+            generoOptions: ["Masculino", "Femenino"],
+            civilOptions: [
+                { value: "", label: "Seleccione..." },
+                { value: "1", label: "Casado" },
+                { value: "2", label: "Viudo" },
+                { value: "3", label: "Soltero" },
+                // Agrega aquí más opciones de países si lo deseas
+            ],
+            situacionOptions: [
+                { value: "", label: "Seleccione..." },
+                { value: "1", label: "Planta Permanente" },
+                { value: "2", label: "Contratado" },
+                { value: "3", label: "Pasante" },
+                // Agrega aquí más opciones de países si lo deseas
+            ],
         };
     },
+    components: {
+        InputComponent,
+    },
     mounted() {
-        var fechaActual = new Date();
-        var formattedFechaActual = fechaActual.toISOString().split("T")[0];
-        document.getElementById("fechaEgreso").value = formattedFechaActual;
+        this.item.fechaEgreso = this.getCurrentData;
+        this.$store.dispatch("getEstados");
+        this.$store.dispatch("getPeriodos");
     },
     methods: {
         createItem() {
-            //this.addItem({ item: this.item })
             this.$store.dispatch("removeErrors");
-            this.$store.dispatch("addItem", { item: this.item });
-            //const params = { item: this.item };
-            // Items.store(params)
-            //     .then((response) => {
-            //         const item = response.data;
-            //         this.$emit("new", item);
-            //     })
-            //     .catch((err) => {
-            //         this.errors = err.response.data.errors;
-            //     });
+            this.$store.dispatch("addItem", this.item);
         },
-        // reset() {
-        //     this.item = {
-        //         nombre: "",
-        //         dni: "",
-        //         cuil: {
-        //             first: "",
-        //             middle: "",
-        //             last: "",
-        //         },
-        //         nac: "",
-        //         estadoCivil: "",
-        //         sexo: "",
-        //         direccion: "",
-        //         telefono: "",
-        //         fechaIngreso: "",
-        //         fechaEgreso: "",
-        //         cargo: "",
-        //         situacion: "",
-        //         estado: "",
-        //         basico: "",
-        //         antiguedad: "",
-        //         titulo: "",
-        //         presentismo: "",
-        //         adicional: "",
-        //         resolucion: "",
-        //         minGarantizado: "",
-        //         noRemunerativo: "",
-        //         plus: "",
-        //         dedicacionFuncional: "",
-        //         prolongacionDeJornada: "",
-        //         productividad: "",
-        //     };
-        // },
     },
     computed: {
         errors() {
             return this.$store.state.errors;
         },
-    },
-    filters: {
-        firstElement: function (array) {
-            if (!array.length) return "";
-            return array[0];
+        estados() {
+            const estados = this.$store.state.estados.map((obj) => {
+                return { value: obj.id, label: obj.estado };
+            });
+            return [{ value: "", label: "Seleccione..." }, ...estados];
+        },
+        periodos() {
+            const periodos = this.$store.state.periodos.map((obj) => {
+                return { value: obj.codigo, label: obj.anio + " - " + obj.periodo };
+            });
+            return [{ value: "", label: "Seleccione..." }, ...periodos];
+        },
+        getCurrentData() {
+            var fechaActual = new Date();
+            var formattedFechaActual = fechaActual.toISOString().split("T")[0];
+            return formattedFechaActual;
         },
     },
 };

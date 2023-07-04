@@ -1,5 +1,7 @@
 export default{
-    errors: [],
+    errors: {},
     items : [],
-    item:{}
+    item:{},
+    estados:[],
+    periodos:[],
 }

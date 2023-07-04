@@ -42,11 +42,7 @@
                             </td>
                             <td>{{ item.nombre }}</td>
                             <td>{{ item.dni }}</td>
-                            <td>
-                                {{ item.cuil.first }}-{{ item.cuil.middle }}-{{
-                                    item.cuil.last
-                                }}
-                            </td>
+                            <td>{{ item.cuil }}</td>
                             <td>{{ item.nac | formatDate }}</td>
                             <td>{{ item.estadoCivil }}</td>
                             <td>{{ item.sexo }}</td>
@@ -390,6 +386,11 @@ import FormEdit from "../guest/formulario/FormEdit.vue";
 
 import Conection from "../../conection";
 export default {
+    data: function () {
+        return {
+            periodo: '202001',
+        };
+    },
     components: {
         FormCreate,
         FormEdit,
@@ -409,7 +410,7 @@ export default {
                     );
                     var fileLink = document.createElement("a");
                     fileLink.href = fileUrl;
-                    fileLink.setAttribute("download", "users.xlsx");
+                    fileLink.setAttribute("download", `liq-${this.periodo}.xlsx`);
                     document.body.appendChild(fileLink);
                     fileLink.click();
                 })
